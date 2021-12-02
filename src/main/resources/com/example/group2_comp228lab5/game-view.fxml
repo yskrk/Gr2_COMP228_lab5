@@ -6,20 +6,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="450.0" prefWidth="320.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group2_comp228lab5.GameController">
+<VBox alignment="CENTER" prefHeight="497.0" prefWidth="359.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group2_comp228lab5.GameController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <TextField fx:id="txtGameId" />
-   <TextField fx:id="txtGameTitle" />
-   <Button fx:id="addGame" mnemonicParsing="false" onAction="#onSubmitGame" text="Add" />
-   <TableView fx:id="tableGame" prefHeight="200.0" prefWidth="200.0">
-     <columns>
-       <TableColumn fx:id="colGameId" prefWidth="75.0" text="ID" />
-       <TableColumn fx:id="colGameTitle" prefWidth="75.0" text="Title" />
-     </columns>
-   </TableView>
-   <Button fx:id="deleteGame" mnemonicParsing="false" onAction="#onDeleteGame" text="Delete" />
+   <Label text="Game Information" />
+   <AnchorPane prefHeight="412.0" prefWidth="319.0">
+      <children>
+         <Label layoutX="48.0" layoutY="16.0" text="Game ID :" />
+         <TextField fx:id="txtGameId" layoutX="139.0" layoutY="10.0" maxWidth="100.0" prefHeight="30.0" prefWidth="100.0" />
+         <TextField fx:id="txtGameTitle" layoutX="138.0" layoutY="65.0" maxWidth="150.0" prefHeight="30.0" prefWidth="150.0" />
+         <Button fx:id="addGame" layoutX="51.0" layoutY="124.0" mnemonicParsing="false" onAction="#onSubmitGame" text="Update / Insert" />
+         <Button fx:id="deleteGame" layoutX="197.0" layoutY="124.0" mnemonicParsing="false" onAction="#onDeleteGame" text="Delete" />
+         <TableView fx:id="tableGame" layoutX="18.0" layoutY="185.0" prefHeight="200.0" prefWidth="282.0">
+           <columns>
+             <TableColumn fx:id="colGameId" prefWidth="108.0" text="Game ID" />
+             <TableColumn fx:id="colGameTitle" prefWidth="171.20001220703125" text="Game Title" />
+           </columns>
+         </TableView>
+         <Label layoutX="48.0" layoutY="72.0" text="Game Title : " />
+      </children>
+   </AnchorPane>
 </VBox>
