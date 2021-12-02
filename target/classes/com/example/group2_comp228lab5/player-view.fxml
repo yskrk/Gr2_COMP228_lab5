@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="495.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group2_comp228lab5.PlayerController">
+   <children>
+      <TextField fx:id="txtPlayerId" layoutX="108.0" layoutY="56.0" />
+      <TextField fx:id="txtFirstName" layoutX="109.0" layoutY="111.0" />
+      <TextField fx:id="txtLastName" layoutX="110.0" layoutY="164.0" />
+      <TextField fx:id="txtAddress" layoutX="417.0" layoutY="55.0" prefHeight="26.0" prefWidth="291.0" />
+      <TextField fx:id="txtPostalCode" layoutX="417.0" layoutY="111.0" />
+      <TextField fx:id="txtProvince" layoutX="634.0" layoutY="110.0" prefHeight="26.0" prefWidth="72.0" />
+      <TextField fx:id="txtPhoneNum" layoutX="417.0" layoutY="164.0" />
+      <Label layoutX="27.0" layoutY="60.0" text="Player ID : " />
+      <Label layoutX="28.0" layoutY="115.0" text="First Name : " />
+      <Label layoutX="28.0" layoutY="168.0" text="Last Name : " />
+      <Label layoutX="316.0" layoutY="60.0" text="Address :" />
+      <Label layoutX="316.0" layoutY="115.0" text="Postal Code : " />
+      <Label layoutX="580.0" layoutY="115.0" text="Province : " />
+      <Label layoutX="316.0" layoutY="168.0" text="Phone number : " />
+      <VBox layoutX="-23.0" layoutY="-122.0" prefHeight="200.0" prefWidth="100.0" />
+      <TableView fx:id="tablePlayer" layoutX="28.0" layoutY="282.0" prefHeight="186.0" prefWidth="692.0">
+        <columns>
+          <TableColumn fx:id="colPlayerId" prefWidth="75.0" text="Player ID" />
+          <TableColumn fx:id="colFirstName" prefWidth="84.79998779296875" text="First Name" />
+            <TableColumn fx:id="colLastName" prefWidth="78.4000244140625" text="Last Name" />
+            <TableColumn fx:id="colAddress" prefWidth="200.0" text="Address" />
+            <TableColumn fx:id="colPostalCode" minWidth="0.0" prefWidth="73.5999755859375" text="Postal Code" />
+            <TableColumn fx:id="colProvince" prefWidth="68.00006103515625" text="Province" />
+            <TableColumn fx:id="colPhoneNum" prefWidth="111.20001220703125" text="Phone number" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAddPlayer" layoutX="82.0" layoutY="223.0" mnemonicParsing="false" onAction="#onSubmitPlayer" text="Add" />
+      <Button fx:id="btnUpdatePlayer" layoutX="217.0" layoutY="223.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="btnDeletePlayer" layoutX="355.0" layoutY="223.0" mnemonicParsing="false" onAction="#onDeletePlayer" text="Delete" />
+   </children>
+</AnchorPane>

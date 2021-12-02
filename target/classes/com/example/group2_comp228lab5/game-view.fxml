@@ -17,8 +17,8 @@
    <Button fx:id="addGame" mnemonicParsing="false" onAction="#onSubmitGame" text="Add" />
    <TableView fx:id="tableGame" prefHeight="200.0" prefWidth="200.0">
      <columns>
-       <TableColumn fx:id="colGameId" prefWidth="75.0" text="C1" />
-       <TableColumn fx:id="colGameTitle" prefWidth="75.0" text="C2" />
+       <TableColumn fx:id="colGameId" prefWidth="75.0" text="ID" />
+       <TableColumn fx:id="colGameTitle" prefWidth="75.0" text="Title" />
      </columns>
    </TableView>
    <Button fx:id="deleteGame" mnemonicParsing="false" onAction="#onDeleteGame" text="Delete" />

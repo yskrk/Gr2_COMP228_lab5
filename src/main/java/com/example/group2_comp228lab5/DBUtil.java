@@ -10,7 +10,8 @@ public class DBUtil {
     private static Connection connection = null;
     private static Statement statement = null;
     private static final String url = "jdbc:oracle:thin:@199.212.26.208:1521:SQLD";
-    private static final String username = "COMP122W21_008_P_12";
+    //private static final String username = "COMP122W21_008_P_12";
+    private static final String username = "COMP214F21_010_P_2";
     private static final String password = "password";
 
     public static void dbConnect() throws SQLException{
@@ -75,6 +76,20 @@ public class DBUtil {
     }
 
     // insertPlayer
+    public static void procPlayer(Integer player_id, String first_name, String last_name,
+                                String address, String postal_code, String province,
+                                Integer phone_number) throws SQLException{
+        String sql = "";
+
+        // check if data exists
+        if (ValidateTable("player", "player_id", player_id)) {
+            sql = "update player set first_name = '" + first_name + "', last_name = '" + last_name + "', address = '" + address + "', postal_code = '" + postal_code + "',province = '" + province + "',phone_number = '" + phone_number + "' where player_id = " + player_id;
+        } else {
+            sql = "insert into player values(" + player_id + ", '" + first_name + "', '" + last_name + "', '" + address + "', '" + postal_code + "', '" + province + "', '" + phone_number + "')";
+        }
+
+        ExecuteQuery(sql);
+    }
 
     // insertPlayerAndGame
 
