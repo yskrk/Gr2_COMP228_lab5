@@ -8,6 +8,7 @@ public class Player {
     String postal_code;  // varchar2(6)
     String province;    // varchar2(2)
     Integer phone_number;   // number(10)
+    String name;
 
     public Player(Integer player_id, String first_name, String last_name, String address, String postal_code, String province, Integer phone_number) {
         this.player_id = player_id;
@@ -17,6 +18,11 @@ public class Player {
         this.postal_code = postal_code;
         this.province = province;
         this.phone_number = phone_number;
+    }
+
+    public Player(Integer player_id, String name) {
+        this.player_id = player_id;
+        this.name = name;
     }
 
     public Integer getPlayer_id() {

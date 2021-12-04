@@ -41,8 +41,17 @@ public class GameController {
     }
 
     public void onDeleteGame(ActionEvent actionEvent) throws SQLException {
-        DBUtil.delete("game", "game_id", 0);
-        populateData();
+        try {
+            DBUtil.delete("game", "game_id", parseInt(txtGameId.getText()));
+
+            populateData();
+        } catch (NumberFormatException e) {
+            // dialog for warning
+            Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+            dialog.setHeaderText(null);
+            dialog.setContentText("Please enter valid id on text field");
+            dialog.showAndWait();
+        }
     }
 
     public void populateData() throws SQLException {

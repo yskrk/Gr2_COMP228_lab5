@@ -1,5 +1,7 @@
 package com.example.group2_comp228lab5;
 
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -13,7 +15,6 @@ public class DBUtil {
     private static Statement statement = null;
     private static final String url = "jdbc:oracle:thin:@199.212.26.208:1521:SQLD";
     private static final String username = "COMP122W21_008_P_12";
-    //private static final String username = "COMP214F21_010_P_2";
     private static final String password = "password";
 
     public static void dbConnect() throws SQLException{
@@ -92,15 +93,19 @@ public class DBUtil {
 
         ExecuteQuery(sql);
     }
-    // insertPlayerAndGame
-    public static void procPlayerAndGame(Integer player_game_id, Integer player_id, Integer game_id, LocalDate playing_date, Integer score) throws SQLException{
+
+    public static void procPlayerAndGame(Integer player_game_id, Integer player_id, Integer game_id, Date playing_date, Integer score) throws SQLException{
         String sql = "";
+
+        // change date format for sql
+        long time = playing_date.getTime();
+        java.sql.Date date = new java.sql.Date(time);
 
         // check if data exists
         if (ValidateTable("playerandgame", "player_game_id", player_game_id)) {
-            sql = "update playerandgame set player_id = " + player_id + ", game_id = " + game_id + ", playing_date = '" + playing_date + "', score = " + score;
+            sql = "update playerandgame set game_id = " + game_id + ", player_id = " + player_id + ", playing_date = '" + date + "', score = " + score + " where player_game_id = " + player_game_id;
         } else {
-            sql = "insert into playerandgame values(" + player_game_id + ", " + player_id + ", " + game_id + ", '" + playing_date + "', " + score + ")";
+            sql = "insert into playerandgame values(" + player_game_id + ", " + game_id + ", " + player_id + ", '" + date + "', " + score + ")";
         }
 
         ExecuteQuery(sql);
@@ -125,17 +130,26 @@ public class DBUtil {
     }
 
     public static void delete(String table, String id_name, Integer id) throws SQLException{
-        dbConnect();
+        // check id text field on window
+        if (ValidateTable(table, id_name, id)) {
+            dbConnect();
 
-        String sql = "delete from " + table + " where " + id_name + " = " + id;
-        statement.executeUpdate(sql);
+            String sql = "delete from " + table + " where " + id_name + " = " + id;
+            statement.executeUpdate(sql);
 
-        if (statement != null) {
-            System.out.println("Data is deleted");
-            statement.close();
+            if (statement != null) {
+                System.out.println("Data is deleted");
+                statement.close();
+            }
+
+            dbDisconnect();
+        } else {
+            // dialog for warning
+            Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+            dialog.setHeaderText(null);
+            dialog.setContentText("Data is not exist.");
+            dialog.showAndWait();
         }
-
-        dbDisconnect();
     }
 
     private static boolean ValidateTable(String tableName, String idName, Integer id) throws  SQLException {
@@ -164,6 +178,4 @@ public class DBUtil {
 
         dbDisconnect();
     }
-
-
 }
