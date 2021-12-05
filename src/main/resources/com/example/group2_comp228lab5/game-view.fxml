@@ -13,15 +13,14 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <Label text="Game Information" />
-   <AnchorPane prefHeight="412.0" prefWidth="319.0">
+   <AnchorPane prefHeight="500.0" prefWidth="319.0">
       <children>
          <Label layoutX="48.0" layoutY="16.0" text="Game ID :" />
          <TextField fx:id="txtGameId" layoutX="139.0" layoutY="10.0" maxWidth="100.0" prefHeight="30.0" prefWidth="100.0" />
          <TextField fx:id="txtGameTitle" layoutX="138.0" layoutY="65.0" maxWidth="150.0" prefHeight="30.0" prefWidth="150.0" />
          <Button fx:id="addGame" layoutX="51.0" layoutY="124.0" mnemonicParsing="false" onAction="#onSubmitGame" text="Update / Insert" />
          <Button fx:id="deleteGame" layoutX="197.0" layoutY="124.0" mnemonicParsing="false" onAction="#onDeleteGame" text="Delete" />
-         <TableView fx:id="tableGame" layoutX="18.0" layoutY="185.0" prefHeight="200.0" prefWidth="282.0">
+         <TableView fx:id="tableGame" layoutX="18.0" layoutY="185.0" prefHeight="267.0" prefWidth="287.0">
            <columns>
              <TableColumn fx:id="colGameId" prefWidth="108.0" text="Game ID" />
              <TableColumn fx:id="colGameTitle" prefWidth="171.20001220703125" text="Game Title" />
