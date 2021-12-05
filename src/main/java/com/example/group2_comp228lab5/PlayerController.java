@@ -92,7 +92,7 @@ public class PlayerController {
             Player player = new Player(rs.getInt("player_id"), rs.getString("first_name"),
                                         rs.getString("last_name"), rs.getString("address"),
                                         rs.getString("postal_code"), rs.getString("province"),
-                                        rs.getInt("phone_number"));
+                                        rs.getLong("phone_number"));
             players.add(player);
         }
 

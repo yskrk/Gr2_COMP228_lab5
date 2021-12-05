@@ -7,10 +7,10 @@ public class Player {
     String address;  // varchar2(200)
     String postal_code;  // varchar2(6)
     String province;    // varchar2(2)
-    Integer phone_number;   // number(10)
+    Long phone_number;   // number(10)
     String name;
 
-    public Player(Integer player_id, String first_name, String last_name, String address, String postal_code, String province, Integer phone_number) {
+    public Player(Integer player_id, String first_name, String last_name, String address, String postal_code, String province, Long phone_number) {
         this.player_id = player_id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -73,11 +73,11 @@ public class Player {
         this.province = province;
     }
 
-    public Integer getPhone_number() {
+    public Long getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(Integer phone_number) {
+    public void setPhone_number(Long phone_number) {
         this.phone_number = phone_number;
     }
 }
