@@ -81,7 +81,7 @@ public class DBUtil {
     // insertPlayer
     public static void procPlayer(Integer player_id, String first_name, String last_name,
                                 String address, String postal_code, String province,
-                                Integer phone_number) throws SQLException{
+                                Long phone_number) throws SQLException{
         String sql = "";
 
         // check if data exists

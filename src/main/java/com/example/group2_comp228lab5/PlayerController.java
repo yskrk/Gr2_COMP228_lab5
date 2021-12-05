@@ -62,7 +62,7 @@ public class PlayerController {
 
     public void onSubmitPlayer(ActionEvent actionEvent) throws SQLException {
         DBUtil.procPlayer(parseInt(txtPlayerId.getText()), txtFirstName.getText(), txtLastName.getText(),
-                                    txtAddress.getText(),txtPostalCode.getText(),txtProvince.getText(),parseInt(txtPhoneNum.getText()));
+                                    txtAddress.getText(),txtPostalCode.getText(),txtProvince.getText(),Long.parseLong(txtPhoneNum.getText()));
         populateData();
     }
 
