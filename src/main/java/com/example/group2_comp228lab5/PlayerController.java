@@ -58,6 +58,16 @@ public class PlayerController {
 
     public void initialize() throws  SQLException {
         populateData();
+        txtPlayerId.focusedProperty().addListener((ov, oldV, newV) ->  {
+            if (!newV) {
+                try {
+                    getPlayerInfo();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("getting player data failed");
+                }
+            }
+        });
     }
 
     public void onSubmitPlayer(ActionEvent actionEvent) throws SQLException {
@@ -78,6 +88,21 @@ public class PlayerController {
             dialog.setContentText("Please enter valid id on text field");
             dialog.showAndWait();
         }
+    }
+
+    private void getPlayerInfo() throws SQLException{
+        Integer id = Integer.parseInt(txtPlayerId.getText());
+
+        String sql = "select * from player where player_id = " + id;
+        ResultSet rs = DBUtil.query(sql);
+        rs.first();
+
+        txtFirstName.setText(rs.getString("first_name"));
+        txtLastName.setText(rs.getString("last_name"));
+        txtAddress.setText(rs.getString("address"));
+        txtPostalCode.setText(rs.getString("postal_code"));
+        txtProvince.setText(rs.getString("province"));
+        txtPhoneNum.setText(rs.getString("phone_number"));
     }
 
     public void populateData() throws SQLException {

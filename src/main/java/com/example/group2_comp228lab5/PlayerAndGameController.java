@@ -60,6 +60,16 @@ public class PlayerAndGameController {
         onSetPlayer();
         onSetGame();
         populateData();
+        txtPlayerGameId.focusedProperty().addListener((ov, oldV, newV) ->  {
+            if (!newV) {
+                try {
+                    getPlayerGameInfo();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("getting PlayerGame data failed");
+                }
+            }
+        });
     }
 
     public void onSetPlayer() throws  SQLException {
@@ -84,9 +94,6 @@ public class PlayerAndGameController {
         }
 
         cmbGame.setItems(games);
-    }
-
-    public void onSetPlayingDate() throws  SQLException {
     }
 
     // show game window method
@@ -161,6 +168,21 @@ public class PlayerAndGameController {
             dialog.setContentText("Please enter valid id on text field");
             dialog.showAndWait();
         }
+    }
+
+    private void getPlayerGameInfo() throws SQLException{
+        Integer id = Integer.parseInt(txtPlayerGameId.getText());
+
+        String sql = "select t1.player_game_id, t1.game_id, t2.game_title, t1.player_id, t3.first_name || ' ' || t3.last_name as player_name, t1.playing_date, t1.score " +
+                "from playerandgame t1, game t2, player t3 " +
+                "where t1.game_id = t2.game_id " +
+                "and t1.player_id = t3.player_id " +
+                "and t1.player_game_id = " + id;
+        ResultSet rs = DBUtil.query(sql);
+        rs.first();
+
+        txtScore.setText(rs.getString("score"));
+        datePlayngDate.setValue(rs.getDate("playing_date").toLocalDate());
     }
 
     public void populateData() throws SQLException {

@@ -33,11 +33,31 @@ public class GameController {
 
     public void initialize() throws  SQLException {
         populateData();
+        txtGameId.focusedProperty().addListener((ov, oldV, newV) ->  {
+            if (!newV) {
+                try {
+                    getGameInfo();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("getting game data failed");
+                }
+            }
+        });
     }
 
     public void onSubmitGame(ActionEvent actionEvent) throws SQLException {
         DBUtil.procGame(parseInt(txtGameId.getText()), txtGameTitle.getText());
         populateData();
+    }
+
+    private void getGameInfo() throws SQLException{
+        Integer id = Integer.parseInt(txtGameId.getText());
+
+        String sql = "select * from game where game_id = " + id;
+        ResultSet rs = DBUtil.query(sql);
+        rs.first();
+
+        txtGameTitle.setText(rs.getString("game_title"));
     }
 
     public void onDeleteGame(ActionEvent actionEvent) throws SQLException {
