@@ -96,6 +96,14 @@ public class PlayerAndGameController {
         Stage stage = new Stage();
         stage.setTitle("Game");
         stage.setScene(scene);
+        stage.setOnCloseRequest(event -> {
+            try {
+                onSetGame();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
         stage.showAndWait();
     }
 
@@ -106,6 +114,14 @@ public class PlayerAndGameController {
         Stage stage = new Stage();
         stage.setTitle("Player");
         stage.setScene(scene);
+        stage.setOnCloseRequest(event -> {
+            try {
+                onSetPlayer();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
         stage.showAndWait();
     }
 
