@@ -67,6 +67,8 @@ public class PlayerAndGameController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                     System.out.println("getting PlayerGame data failed");
+                } catch (NumberFormatException e) {
+                    System.out.println("entered invalid value");
                 }
             }
         });

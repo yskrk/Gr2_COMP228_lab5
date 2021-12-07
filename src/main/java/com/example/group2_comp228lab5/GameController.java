@@ -40,6 +40,8 @@ public class GameController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                     System.out.println("getting game data failed");
+                } catch (NumberFormatException e) {
+                    System.out.println("entered invalid value");
                 }
             }
         });
