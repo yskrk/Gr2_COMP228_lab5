@@ -193,6 +193,8 @@ public class PlayerAndGameController {
         ResultSet rs = DBUtil.query(sql);
         rs.first();
 
+        cmbPlayer.setValue(rs.getString("player_name"));
+        cmbGame.setValue(rs.getString("game_title"));
         txtScore.setText(rs.getString("score"));
         datePlayngDate.setValue(rs.getDate("playing_date").toLocalDate());
     }
