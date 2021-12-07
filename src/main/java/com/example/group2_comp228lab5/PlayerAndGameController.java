@@ -38,6 +38,8 @@ public class PlayerAndGameController {
     @FXML
     private Button btnDeletePlayerGame;
     @FXML
+    private Button btnClearPlayerGame;
+    @FXML
     private Button btnPlayer;
     @FXML
     private Button btnGame;
@@ -170,6 +172,14 @@ public class PlayerAndGameController {
             dialog.setContentText("Please enter valid id on text field");
             dialog.showAndWait();
         }
+    }
+
+    public void onClearPlayerGame(ActionEvent actionEvent) {
+        txtPlayerGameId.clear();
+        cmbPlayer.setValue(null);
+        cmbGame.setValue(null);
+        datePlayngDate.setValue(null);
+        txtScore.clear();
     }
 
     private void getPlayerGameInfo() throws SQLException{
