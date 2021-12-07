@@ -38,6 +38,8 @@ public class PlayerController {
     @FXML
     private Button deletePlayer;
     @FXML
+    private Button btnClearPlayer;
+    @FXML
     private TableView tablePlayer;
     @FXML
     private TableColumn colPlayerId;
@@ -90,6 +92,16 @@ public class PlayerController {
         }
     }
 
+    public void onClearPlayer(ActionEvent actionEvent) {
+        txtPlayerId.clear();
+        txtFirstName.clear();
+        txtLastName.clear();
+        txtAddress.clear();
+        txtPostalCode.clear();
+        txtProvince.clear();
+        txtPhoneNum.clear();
+    }
+
     private void getPlayerInfo() throws SQLException{
         Integer id = Integer.parseInt(txtPlayerId.getText());
 
@@ -120,6 +132,9 @@ public class PlayerController {
                                         rs.getLong("phone_number"));
             players.add(player);
         }
+
+
+
 
         // assign each attribute of the Player class (entity) to each column of the table
         colPlayerId.setCellValueFactory(new PropertyValueFactory("player_id"));

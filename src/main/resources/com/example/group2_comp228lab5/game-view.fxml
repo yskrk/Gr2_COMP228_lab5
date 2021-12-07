@@ -18,8 +18,8 @@
          <Label layoutX="48.0" layoutY="16.0" text="Game ID :" />
          <TextField fx:id="txtGameId" layoutX="139.0" layoutY="10.0" maxWidth="100.0" prefHeight="30.0" prefWidth="100.0" />
          <TextField fx:id="txtGameTitle" layoutX="138.0" layoutY="65.0" maxWidth="150.0" prefHeight="30.0" prefWidth="150.0" />
-         <Button fx:id="addGame" layoutX="51.0" layoutY="124.0" mnemonicParsing="false" onAction="#onSubmitGame" text="Update / Insert" />
-         <Button fx:id="deleteGame" layoutX="197.0" layoutY="124.0" mnemonicParsing="false" onAction="#onDeleteGame" text="Delete" />
+         <Button fx:id="addGame" layoutX="18.0" layoutY="124.0" mnemonicParsing="false" onAction="#onSubmitGame" text="Update / Insert" />
+         <Button fx:id="deleteGame" layoutX="146.0" layoutY="124.0" mnemonicParsing="false" onAction="#onDeleteGame" text="Delete" />
          <TableView fx:id="tableGame" layoutX="18.0" layoutY="185.0" prefHeight="267.0" prefWidth="287.0">
            <columns>
              <TableColumn fx:id="colGameId" prefWidth="108.0" text="Game ID" />
@@ -27,6 +27,7 @@
            </columns>
          </TableView>
          <Label layoutX="48.0" layoutY="72.0" text="Game Title : " />
+         <Button fx:id="btnClearGame" layoutX="229.0" layoutY="124.0" mnemonicParsing="false" onAction="#onClearGame" text="Clear" />
       </children>
    </AnchorPane>
 </VBox>
