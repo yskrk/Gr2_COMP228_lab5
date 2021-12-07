@@ -74,6 +74,11 @@ public class GameController {
         }
     }
 
+    public void onClearGame(ActionEvent actionEvent){
+        txtGameId.clear();
+        txtGameTitle.clear();
+    }
+
     public void populateData() throws SQLException {
         String sql = "select * from game";
         ResultSet rs = DBUtil.query(sql);
